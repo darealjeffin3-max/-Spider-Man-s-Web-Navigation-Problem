@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', monospace;
+}
+
+body {
+    overflow: hidden;
+    background: #05070f;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Ensure canvas takes up full screen behind the UI */
+canvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+#crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid rgba(0, 229, 255, 0.8);
+    border-radius: 50%;
+    z-index: 10;
+    pointer-events: none;
+    transition: transform 0.1s, border-color 0.1s;
+}
+
+#crosshair::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+#crosshair.locked {
+    border-color: #ff0055;
+    transform: scale(1.4);
+    box-shadow: 0 0 12px #ff0055;
+}
+
+#click-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 7, 15, 0.85);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    cursor: pointer;
+}
+
+#hud {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #00e5ff;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 10;
+    line-height: 1.6;
+    font-weight: bold;
+}
